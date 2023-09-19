@@ -1,0 +1,25 @@
+#画面サイズを指定（もっといい方法があるかも）
+size_rate = 40
+
+
+def setup():
+    size(9*size_rate, 16*size_rate)
+    #日本語表示を可能に（ネットで出てきた方法をコピペしただけだからよくわからん）
+    font = createFont('Dialog.bold', 50)
+    textFont(font)
+    
+    
+def draw():
+    #背景色
+    background(255)
+    
+    #画面下のメニューボタン
+    fill(255,215,0)
+    for i in range(3):
+      rect(width/3 * i, height*0.9, width/3, height*0.1)
+    textAlign(CENTER, CENTER)
+    textSize(30)
+    fill(0)
+    text(u'検索', width/6, height*0.95)
+    text(u'投稿', width/6*3, height*0.95)
+    text(u'設定', width/6*5, height*0.95)
