@@ -3,6 +3,13 @@ Search search;
 Post post;
 Select select;
 
+//データを取得
+Table data;
+int dataRow, dataColumn;
+String[] names, prices, shops, tags, comments;
+PImage[] images;
+int[] evaluates;
+
 //どの画面なのかを制御（検索：０　投稿：１　設定：２　投稿中の選択画面：３）
 int scene = 0;
 
@@ -15,6 +22,28 @@ void setup() {
   search = new Search(0);
   post = new Post(0);
   select = new Select(0);
+  
+  data = loadTable("data.csv", "header");
+  dataRow = data.getRowCount();
+  dataColumn = data.getColumnCount();
+  println(dataRow);
+  names = new String[dataRow];
+  images = new PImage[dataRow];
+  prices = new String[dataRow];
+  shops = new String[dataRow];
+  tags = new String[dataRow];
+  comments = new String[dataRow];
+  evaluates = new int[dataRow];
+  
+  for(int i = 0; i < dataRow; i++) {
+    images[i] = loadImage(data.getString(i, 0));
+    names[i] = data.getString(i, 1);
+    evaluates[i] = data.getInt(i, 2);
+    prices[i] = data.getString(i, 3);
+    shops[i] = data.getString(i, 4);
+    tags[i] = data.getString(i, 5);
+    comments[i] = data.getString(i, 6);
+  }
 }
     
     
